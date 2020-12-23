@@ -1,0 +1,27 @@
+packages:
+  __APP_PACKAGE__:
+    license: Apache-2.0
+    actions:
+      watcher:
+        function: actions/watcher/index.js
+        web: 'yes'
+        runtime: 'nodejs:12'
+        inputs:
+          LOG_LEVEL: debug
+          AIO_TOKEN: $AIO_TOKEN
+          AEMCM_ENDPOINTS: $AEMCM_ENDPOINTS
+          AEMCM_ENVIRONMENTS: $AEMCM_ENVIRONMENTS
+        annotations:
+          require-adobe-auth: false
+          final: true
+      slackhook:
+          function: actions/slackhook/index.js
+          web: 'yes'
+          runtime: 'nodejs:12'
+          inputs:
+            LOG_LEVEL: debug
+            SLACK_TOKEN: $SLACK_TOKEN
+            SLACK_CHANNEL_ID: $SLACK_CHANNEL_ID
+          annotations:
+            require-adobe-auth: false
+            final: true
